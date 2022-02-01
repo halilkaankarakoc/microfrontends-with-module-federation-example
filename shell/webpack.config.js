@@ -45,9 +45,8 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         storefront: 'storefront@http://localhost:3000/remoteEntry.js',
-        'product_detail': 'product_detail@http://localhost:3001/remoteEntry.js',
+        product_detail: 'product_detail@http://localhost:3001/remoteEntry.js',
         favorites: 'favorites@http://localhost:3004/remoteEntry.js',
-        basket: 'basket@http://localhost:3002/remoteEntry.js',
         navigation: 'navigation@http://localhost:3007/remoteEntry.js',
       },
       exposes: {

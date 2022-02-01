@@ -12,9 +12,9 @@ export default class FavoritesService {
       });
   }
 
-  async addFavorites(id: number) {
+  async removeFromFavorites(id: number) {
     return fetch(`http://localhost:3006/favorites`, {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },

@@ -15,31 +15,31 @@ type ProductCardProps = {
 
 const ProductCard = ({ product, addProductToFavorites }: ProductCardProps) => {
   return (
-    <Card sx={{ maxWidth: 345}}>
-      <Link to={`/product/${product.id}`}>
-        <CardMedia
-          component="img"
-          height="350"
-          image={product.image}
-          alt={product.name}
-        />
-      </Link>
+      <Card>
+        <Link to={`/product/${product.id}`}>
+          <CardMedia
+            component="img"
+            height="350"
+            image={product.image}
+            alt={product.name}
+          />
+        </Link>
 
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {product.name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {product.price} $
-        </Typography>
-      </CardContent>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {product.name}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {product.price} $
+          </Typography>
+        </CardContent>
 
-      <CardActions>
-        <IconButton onClick={() => addProductToFavorites(product)}>
-          <i style={{color: 'orange'}} className="ri-heart-add-line ri-2x"></i>
-        </IconButton>
-      </CardActions>
-    </Card>
+        <CardActions>
+          <IconButton onClick={() => addProductToFavorites(product)}>
+            <i style={{color: 'orange'}} className="ri-heart-add-line ri-2x"></i>
+          </IconButton>
+        </CardActions>
+      </Card>
   );
 };
 

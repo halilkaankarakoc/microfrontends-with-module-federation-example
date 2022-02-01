@@ -4,6 +4,7 @@ import { Product } from './models/product';
 import {ProductsService} from './services/products';
 import ProductCard from './components/ProductCard';
 import { FavoritesService } from './services/favorites';
+import {useHistory} from 'react-router-dom';
 
 const StorefrontContent = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -16,22 +17,22 @@ const StorefrontContent = () => {
   const addProductToFavorites = async (product: Product) => {
     const favoriteService = new FavoritesService();
     await favoriteService.addFavorites(product.id);
-    new BroadcastChannel('navigation').postMessage({type: 'UPDATE_FAVORITES'});
+    const channel = new BroadcastChannel('navigation');
+    channel.postMessage({type: 'UPDATE_FAVORITES'});
+    channel.close();
   };
 
   return (
-    <div>
-      <Grid container spacing={5}>
+    <Grid container spacing={5}>
         {
           products.map((product) => (
-            <Grid key={product.id} item xs={3}>
+              <Grid key={product.id} item xs={3}>
                 <ProductCard product={product} addProductToFavorites={addProductToFavorites}/>
-            </Grid>
+              </Grid>
             )
           )
         }
-      </Grid>
-    </div>
+    </Grid>
   );
 };
 

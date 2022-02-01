@@ -9,7 +9,6 @@ import { AuthModule } from './auth/auth.module';
 import { UsersService } from './users/users.service';
 import { ProductsModule } from './products/products.module';
 import { FavoritesModule } from './favorites/favorites.module';
-import { BasketModule } from './basket/basket.module';
 
 @Module({
   controllers: [AppController],
@@ -23,7 +22,6 @@ import { BasketModule } from './basket/basket.module';
     AuthModule,
     ProductsModule,
     FavoritesModule,
-    BasketModule,
   ],
 })
 export class AppModule {}

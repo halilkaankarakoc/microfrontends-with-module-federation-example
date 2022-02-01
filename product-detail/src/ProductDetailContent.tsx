@@ -4,7 +4,6 @@ import { FavoritesService } from './services/favorites';
 import ProductDetail from './components/ProductDetail';
 import { Product } from './models/product';
 import { ProductDetailService } from './services/product-detail';
-import BasketService from './services/basket';
 
 const ProductDetailContent = () => {
   const { id } = useParams();
@@ -22,18 +21,14 @@ const ProductDetailContent = () => {
   const addProductToFavorites = async (product: Product) => {
     const favoriteService = new FavoritesService();
     await favoriteService.addFavorites(product.id);
-    new BroadcastChannel('navigation').postMessage({type: 'UPDATE_FAVORITES'});
+    const channel = new BroadcastChannel('navigation');
+    channel.postMessage({type: 'UPDATE_FAVORITES'});
+    channel.close();
   };
 
-  const addProductToBasket = async (product: Product) => {
-    const basketService = new BasketService();
-    await basketService.addBasket(product.id);
-    new BroadcastChannel('navigation').postMessage({type: 'UPDATE_BASKET'});
-  };
-  
   return (
-    <div>
-      <ProductDetail product={product} addProductToFavorites={addProductToFavorites} addProductToBasket={addProductToBasket}/>
+    <div style={{display: 'flex', justifyContent: 'center', alignContent: 'center'}}>
+      <ProductDetail product={product} addProductToFavorites={addProductToFavorites} />
     </div>
   );
 };
