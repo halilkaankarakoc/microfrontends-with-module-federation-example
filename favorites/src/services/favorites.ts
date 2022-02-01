@@ -1,7 +1,4 @@
 import { Favorites } from '../models/favorites';
-import { BehaviorSubject } from 'rxjs';
-
-export const favoritesSubject = new BehaviorSubject<Favorites>({favoriteItems: []});
 
 export default class FavoritesService {
   async getFavorites(): Promise<Favorites> {
